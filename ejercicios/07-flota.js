@@ -35,12 +35,22 @@
 const { Vehiculo, Alimentador, BusDual } = require("./06-tipos-de-vehiculo");
 
 function crearFlota() {
-  // Tu código aquí
+  const busBase = new Vehiculo("RVT101", 40);
+  const bus1 = new Alimentador("ALM202", 25);
+  const bus2 = new BusDual("DUA303", 80, true);
+  const vehiculos = [busBase, bus1, bus2];
+  return vehiculos;
 }
 
 function reporteFlota(flota) {
-  // Tu código aquí
+  let reporte = [];
+  for (let vehiculo of flota) {
+    reporte.push(vehiculo.reporte());
+  }
+  return reporte;
 }
+
+console.log(reporteFlota(crearFlota()));
 
 // No borres esta línea: es la puerta por donde el test usa tus funciones
 module.exports = { crearFlota, reporteFlota };
